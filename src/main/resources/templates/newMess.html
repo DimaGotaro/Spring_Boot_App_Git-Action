@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>New</title>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/all_s.css}" />
+</head>
+<body>
+<div class="centr2">
+    <p>Добавить сообщение</p>
+    <br>
+    <br>
+    <form method="POST" th:action="@{/all}" enctype="multipart/form-data" th:object="${sob}">
+        <label>Введите текст нового сообщения:
+            <input type="text" th:field="*{text}" placeholder="Текст сообщения" />
+            <div style="color: red" th:if="${#fields.hasErrors('text')}" th:errors="*{text}"></div>
+        </label>
+        <br>
+        <br>
+        <br>
+        <label>Введите тэг нового сообщения:
+            <input type="text" th:field="*{tag}" placeholder="Тэг сообщения" />
+            <div style="color: red" th:if="${#fields.hasErrors('tag')}" th:errors="*{tag}"></div>
+        </label>
+        <br>
+        <br>
+        <br>
+        <input type="file" name="file" />
+        <br>
+        <br>
+        <input type="submit" value="Добавить" class="dob" />
+    </form>
+</div>
+</body>
+</html>

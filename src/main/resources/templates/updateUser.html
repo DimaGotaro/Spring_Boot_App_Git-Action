@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update</title>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/all_s.css}" />
+</head>
+<body>
+<div class="usr">
+<h2><a th:href="@{/all}" th:text="Kacher"></a></h2>
+<p>Введите изменённые значения сообщения:</p>
+<form th:method="POST" th:action="@{/user/{id}(id=${objU.getId})}" th:object="${objU}">
+    <input type="hidden" name="_method" value="PATCH">
+    <label>Введите имя:
+        <input type="text" th:field="*{username}" />
+    </label>
+    <label>Введите пароль:
+        <input type="text" th:field="*{password}" />
+    </label>
+    <br>
+    <br>
+    <label>Выберите роль:
+        <br>
+        <br>
+        <div th:each="role : ${rol}">
+        <input type="checkbox" th:field="*{roles}" th:value="${role}" th:text="${role}" />
+        <br>
+        <br>
+        </div>
+    </label>
+    <br>
+    <input type="submit" value="Изменить" />
+</form>
+</div>
+</body>
+</html>

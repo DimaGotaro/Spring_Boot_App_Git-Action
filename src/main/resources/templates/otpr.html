@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Отправка</title>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/all_s.css}" />
+</head>
+<body>
+<div class="centr2">
+    <h2><a th:href="@{/all}" th:text="Kacher"></a></h2>
+    <h3>Введите сумму которую хотите перевести:</h3>
+    <form th:action="@{/o/otpr}" method="post">
+        <input type="hidden" name="_method" value="PATCH">
+        <input type="text" name="per">
+        <h3>Выберите пользователей, которым хотите перевести:</h3>
+        <p>(при выборе нескольких пользователей введённая сумма будет переведена каждому пользователю)</p>
+        <div class="fl">
+        <div th:each="user : ${users}" class="name">
+            <input type="checkbox" th:text="${user.getUsername}" th:value="${user.getId}" name="usr">
+        </div>
+        </div>
+        <input type="hidden" value="0" name="usr">
+        <br>
+        <input type="submit" th:value="Перевести">
+    </form>
+    <h2 th:text="${res}"></h2>
+</div>
+</body>
+</html>

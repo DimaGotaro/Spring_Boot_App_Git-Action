@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8" />
+    <title>All</title>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/all_s.css}" />
+</head>
+<body>
+<div class="cont">
+<div class="fl flh">
+    <div class="fl1">
+        <div class="lab"><label><a th:href="@{/new}" th:text="Добавить"></a> новое сообщение</label></div>
+        <form th:method="GET" th:action="@{/all}">
+            <!--<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />--><!--прописан автоматически-->
+            <label>Найти сообщения по тэгу
+                <input type="text" name="fil" placeholder="Введите тэг" th:value="${tag}"/>
+            </label>
+            <input type="submit" value="Найти" />
+        </form>
+    </div>
+    <div>
+        <h2><a th:href="@{/hello2}" th:text="Hello"></a>, <a th:href="@{/user}" th:text="Users"></a></h2>
+    <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" value="Выйти"/>
+    </form>
+    </div>
+    <div class="schet">
+        <h2 th:text="${'Счёт: ' + usr.getM + '$'}"></h2>
+        <p>Введите сумму для пополнения:</p>
+        <form th:action="@{/popol}" method="post">
+            <input type="hidden" name="_method" value="PATCH" />
+            <input type="hidden" name="id" th:value="${usr.getId}" />
+            <input type="text" name="mon" />
+            <input type="submit" value="Пополнить" />
+        </form>
+        <p th:text="${res}"></p>
+        <p><label><a th:href="@{/o/otpr}" th:text="Перевод"></a> пользователям</label></p>
+    </div>
+</div>
+<h3 class="sob">Список сообщений:</h3>
+<div class="mess" th:each="mess : ${all}" id="mess-list">
+    <div class="mess_t" data-th-id="${mess.getId}">
+        <p th:text="${'Id: ' + mess.getId}"></p>
+        <p th:text="${'Text: ' + mess.getText}"></p>
+        <p th:text="${'Tag: ' + mess.getTag}"></p>
+        <p th:text="${'Author: ' + mess.getAutName}"></p>
+    </div>
+    <div th:if="${mess.getFilename}">
+        <img th:src="@{/img/{m}(m=${mess.getFilename})}" class="img" />
+    </div>
+    <div class="cv">
+        <a th:href="@{/mess/{id}(id=${mess.getId})}"
+       th:text="Изменить"></a>
+        <br />
+        <form th:method="post" th:action="@{/mess/d}" class="del">
+            <input type="hidden" name="_method" value="DELETE" />
+            <input type="hidden" name="id" th:value="${mess.getId}" />
+            <input type="submit" value="Удалить" />
+        </form>
+    </div>
+    <br />
+</div>
+</div>
+</body>
+</html>

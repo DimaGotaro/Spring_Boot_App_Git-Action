@@ -1,0 +1,131 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+.fl, .cv, .mess {
+    display: flex;
+    align-items: center;
+}
+
+.centr {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 200px;
+    width: fit-content;
+    height: fit-content;
+}
+
+.centr2 {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+    width: fit-content;
+    height: fit-content;
+}
+
+.name {
+    font-size: 25px;
+    margin-right: 20px;
+}
+
+.hello {
+    font-size: 30px;
+}
+
+.usr {
+    margin-left: 100px;
+    margin-top: 70px;
+}
+
+.mess_t {
+    width: 300px;
+}
+
+.schet {
+    margin-left: 150px;
+    width: 300px;
+}
+
+.cv {
+    margin-left: auto;
+}
+
+.lab {
+    margin-bottom: 50px;
+}
+
+.fl1 {
+    margin-right: 150px;
+    /*border-bottom: 1px solid black;*/
+    padding-bottom: 10px;
+}
+
+.flh {
+    height: 230px;
+}
+
+.cont {
+    max-width: 1200px;
+    margin: auto;
+    padding-top: 10px;
+}
+
+body {
+    background-color: #cfcfcf;
+    font-family: 'Roboto', sans-serif;
+
+    /*блок на весь экран*/
+    /*margin: 0;*/
+    /*position: fixed;*/
+    /*top: 0;*/
+    /*left: 0;*/
+    /*width: 100%;*/
+    /*height: 100%;*/
+}
+
+.del, .img {
+    margin-left: 20px;
+}
+
+.img {
+    width: 350px;
+    height: 200px;
+}
+
+.dob {
+    margin-left: 320px;
+}
+
+.table {
+    width: 50%;
+    border-spacing: 0;
+    /* расстояние между ячейками */
+    margin-top: 20px;
+    margin-bottom: 80px;
+}
+
+.table td {
+    padding: 10px;
+    border-bottom: 1px solid gray;
+}
+
+.table th, .mess, .sob {
+    border-bottom: 1px solid gray;
+}
+
+.table th:nth-child(1), .table th:nth-child(2), .table th:nth-child(3),
+.table th:nth-child(4), .table th:nth-child(5) {
+    border-right: 1px solid gray;
+}
+
+.table th:nth-child(1) {
+    border-left: 1px solid gray;
+}
+
+.table td:nth-child(1), .table td:nth-child(2), .table td:nth-child(3),
+.table td:nth-child(4), .table td:nth-child(5) {
+    border-right: 1px solid gray;
+}
+
+.table td:nth-child(1) {
+    border-left: 1px solid gray;
+}
