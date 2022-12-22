@@ -7,9 +7,19 @@ on:
       - 'master'
 
 jobs:
-  build:
+  container-job:
     runs-on: ubuntu-latest
-
+    services:
+      postgres_db:
+        image: postgres
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: public
+        ports:
+          - 5432:5432
+        # needed because the postgres container does not provide a healthcheck
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
     steps:
       - uses: actions/checkout@v3
       - name: Set up JDK 17
@@ -17,5 +27,5 @@ jobs:
         with:
           java-version: '17'
           distribution: 'adopt'
-      - name: Build with Maven
-        run: mvn --batch-mode --update-snapshots package
+      - name: Maven Verify
+          run: mvn -B clean verify
