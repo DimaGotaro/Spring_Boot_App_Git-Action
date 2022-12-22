@@ -14,7 +14,7 @@ jobs:
         image: postgres
         env:
           POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
+          POSTGRES_PASSWORD: vbyfnj56
           POSTGRES_DB: public
         ports:
           - 5432:5432
