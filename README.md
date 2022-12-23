@@ -1,5 +1,8 @@
 # Spring_Boot_App
 
+Status of Last Deployment:<br>
+<img src="https://github.com/DimaGotaro/Spring_Boot_App-Git-Action-/workflows/Build/badge.svg?branch=master"><br>
+
 Приветствую!
 
 Для запуска приложения необходимо настроить подключение к базе данных.
