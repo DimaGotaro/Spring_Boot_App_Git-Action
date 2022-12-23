@@ -14,7 +14,7 @@ jobs:
         image: postgres:14
         volumes:
           - postgres:/var/lib/postgresql/data
-          - ./init-database.sh:/docker-entrypoint-initdb.d/init-database.sh
+          - chmod 755 ./init-database.sh:/docker-entrypoint-initdb.d/init-database.sh
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: vbyfnj56
