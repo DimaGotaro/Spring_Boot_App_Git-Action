@@ -11,6 +11,7 @@ import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.ui.Model;
 
 import java.util.Collections;
@@ -21,6 +22,7 @@ import java.util.TreeSet;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
+@TestPropertySource("/applicationTest.properties")
 class UserServTest {
 
     @Autowired

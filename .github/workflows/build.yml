@@ -12,17 +12,17 @@ jobs:
     services:
       postgres_db:
         image: postgres:14
-        volumes:
-          - docker-postgresql-multiple-databases:/docker-entrypoint-initdb.d
+#        volumes:
+#          - docker-postgresql-multiple-databases:/docker-entrypoint-initdb.d
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: vbyfnj56
-          POSTGRES_MULTIPLE_DATABASES: kacher, public
-#          POSTGRES_DB: kacher
+          POSTGRES_DB: public
+#          POSTGRES_MULTIPLE_DATABASES: kacher, public
         ports:
           - 5432:5432
         # needed because the postgres container does not provide a healthcheck
-#        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
     steps:
       - uses: actions/checkout@v3
       - name: Set up JDK 17
