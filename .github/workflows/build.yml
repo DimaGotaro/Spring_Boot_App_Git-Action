@@ -9,15 +9,15 @@ on:
 jobs:
   container-job:
     runs-on: ubuntu-latest
-#    services:
-#      postgres_db:
-#        build:
-#          context: ./Docker
-#          dockerfile: db.Dockerfile
-#        volumes:
-#            - ./var/pgdata:/var/lib/postgresql/data
-#        ports:
-#            - "5432:5432"
+    services:
+      postgres_db:
+        build:
+          context: ./Docker
+          dockerfile: db.Dockerfile
+        volumes:
+            - ./var/pgdata:/var/lib/postgresql/data
+        ports:
+            - "5432:5432"
     steps:
       - uses: actions/checkout@v3
       - name: Set up JDK 17
@@ -25,9 +25,9 @@ jobs:
         with:
           java-version: '17'
           distribution: 'adopt'
-      - name: Create db
-        run: |
-          docker-compose -f docker-compose.yml up --no-start
-          docker-compose -f docker-compose.yml start
+#      - name: Create db
+#        run: |
+#          docker-compose -f docker-compose.yml up --no-start
+#          docker-compose -f docker-compose.yml start
       - name: Maven Verify
         run: mvn -B clean verify
