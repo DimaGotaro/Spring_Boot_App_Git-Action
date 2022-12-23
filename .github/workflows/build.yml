@@ -13,11 +13,11 @@ jobs:
       postgres_db:
         image: postgres:14
         volumes:
-          - ./docker-postgresql-multiple-databases:/docker-entrypoint-initdb.d
+          - ./create-multiple-postgresql-databases.sh:/docker-entrypoint-initdb.d/create-multiple-postgresql-databases.sh
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: vbyfnj56
-          POSTGRES_MULTIPLE_DATABASES: kacher, public
+          POSTGRES_MULTIPLE_DATABASES: kacher,public
         ports:
           - 5432:5432
         # needed because the postgres container does not provide a healthcheck
