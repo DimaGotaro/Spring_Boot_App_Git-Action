@@ -11,23 +11,15 @@ jobs:
     runs-on: ubuntu-latest
     services:
       postgres_db:
-        image: postgres
+        image: postgres:14
+        volumes:
+          - ../docker-postgresql-multiple-databases:/docker-entrypoint-initdb.d
         env:
-          POSTGRES_USER: postgres:14
+          POSTGRES_USER: postgres
           POSTGRES_PASSWORD: vbyfnj56
-          POSTGRES_DB: kacher
+          POSTGRES_MULTIPLE_DATABASES: kacher, public
         ports:
-          - ${POSTGRES_DEV_PORT}:5432
-        # needed because the postgres container does not provide a healthcheck
-        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
-      postgres_test:
-        image: postgres
-        env:
-          POSTGRES_USER: postgres:14
-          POSTGRES_PASSWORD: vbyfnj56
-          POSTGRES_DB: public
-        ports:
-          - ${POSTGRES_TEST_PORT}:5432
+          - 5432:5432
         # needed because the postgres container does not provide a healthcheck
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
     steps:
