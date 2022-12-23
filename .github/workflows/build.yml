@@ -12,12 +12,17 @@ jobs:
     services:
       postgres_db:
         image: postgres:14
-          context: ./Docker
-          dockerfile: db.Dockerfile
         volumes:
-            - ./var/pgdata:/var/lib/postgresql/data
+          - postgres:/var/lib/postgresql/data
+          - ./init-database.sh:/docker-entrypoint-initdb.d/init-database.sh
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: vbyfnj56
+#          POSTGRES_DB: kacher
         ports:
-            - "5432:5432"
+          - 5432:5432
+        # needed because the postgres container does not provide a healthcheck
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
     steps:
       - uses: actions/checkout@v3
       - name: Set up JDK 17
@@ -27,7 +32,7 @@ jobs:
           distribution: 'adopt'
 #      - name: Create db
 #        run: |
-#          docker-compose -f docker-compose.yml up --no-start
-#          docker-compose -f docker-compose.yml start
+#            psql -U postgres
+#            psql -c "create database public"
       - name: Maven Verify
         run: mvn -B clean verify
