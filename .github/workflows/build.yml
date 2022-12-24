@@ -12,13 +12,10 @@ jobs:
     services:
       postgres_db:
         image: postgres:14
-#        volumes:
-#          - docker-postgresql-multiple-databases:/docker-entrypoint-initdb.d
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: vbyfnj56
           POSTGRES_DB: public
-#          POSTGRES_MULTIPLE_DATABASES: kacher, public
         ports:
           - 5432:5432
         # needed because the postgres container does not provide a healthcheck
@@ -30,10 +27,6 @@ jobs:
         with:
           java-version: '17'
           distribution: 'adopt'
-#      - name: Create db
-#        run: |
-#            psql -U postgres
-#            psql -c "create database public"
       - name: Create dir
         run: sudo mkdir /home/uploads
       - name: Maven Verify
