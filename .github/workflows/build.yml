@@ -34,7 +34,7 @@ jobs:
 #        run: |
 #            psql -U postgres
 #            psql -c "create database public"
-#      - name: Create dir
-#        run: mkdir /home/uploads
+      - name: Create dir
+        run: sudo mkdir /home/uploads
       - name: Maven Verify
         run: mvn -B clean verify
