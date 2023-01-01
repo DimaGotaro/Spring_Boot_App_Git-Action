@@ -48,6 +48,7 @@
     </div>
     <div th:if="${mess.getFilename}">
         <img th:src="@{/img/{m}(m=${mess.getFilename})}" class="img" />
+<!--        <a th:href="@{/img/{m}(m=${mess.getFilename})}" th:text="${mess.firstFileName}" download class="txt" />-->
     </div>
     <div class="cv">
         <a th:href="@{/mess/{id}(id=${mess.getId})}"

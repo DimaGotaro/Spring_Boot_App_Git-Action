@@ -52,6 +52,11 @@ public class Message {
     }
 
     @JsonIgnore
+    public String firstFileName() {
+        return getFilename() != null ? getFilename().substring(37) : "<none>";
+    }
+
+    @JsonIgnore
     public String getAutName() {
         return getAuthorName() != null ? getAuthorName() : "<none>";
     }
